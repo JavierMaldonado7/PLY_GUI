@@ -21,6 +21,8 @@ reserved_words = {
 
     'reset': 'RESET',
 
+    'line': 'LINE',
+
     'label': 'LABEL'
 }
 

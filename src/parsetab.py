@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'BUTTON CHECK COMMA CURL_L CURL_R IDENTIFIER LABEL MAKEWINDOW NUMBER OVAL PERIOD RESET SQUARE STARTexpression : START CURL_L NUMBER COMMA NUMBER CURL_Rexpression : MAKEWINDOWexpression : CHECKexpression : BUTTON  CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_Rexpression : OVAL CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_Rexpression : SQUARE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_Rexpression : RESET'
+_lr_signature = 'BUTTON CHECK COMMA CURL_L CURL_R IDENTIFIER LABEL LINE MAKEWINDOW NUMBER OVAL PERIOD RESET SQUARE STARTexpression : START CURL_L NUMBER COMMA NUMBER CURL_Rexpression : IDENTIFIER PERIOD LABELexpression : MAKEWINDOWexpression : CHECKexpression : BUTTON  CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_Rexpression : OVAL CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_Rexpression : SQUARE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_Rexpression : RESETexpression : LINE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R'
     
-_lr_action_items = {'START':([0,],[2,]),'MAKEWINDOW':([0,],[3,]),'CHECK':([0,],[4,]),'BUTTON':([0,],[5,]),'OVAL':([0,],[6,]),'SQUARE':([0,],[7,]),'RESET':([0,],[8,]),'$end':([1,3,4,8,25,38,39,40,],[0,-2,-3,-7,-1,-4,-5,-6,]),'CURL_L':([2,5,6,7,],[9,10,11,12,]),'NUMBER':([9,10,11,12,17,18,19,20,26,27,28,32,33,34,],[13,14,15,16,21,22,23,24,29,30,31,35,36,37,]),'COMMA':([13,14,15,16,22,23,24,29,30,31,],[17,18,19,20,26,27,28,32,33,34,]),'CURL_R':([21,35,36,37,],[25,38,39,40,]),}
+_lr_action_items = {'START':([0,],[2,]),'IDENTIFIER':([0,],[3,]),'MAKEWINDOW':([0,],[4,]),'CHECK':([0,],[5,]),'BUTTON':([0,],[6,]),'OVAL':([0,],[7,]),'SQUARE':([0,],[8,]),'RESET':([0,],[9,]),'LINE':([0,],[10,]),'$end':([1,4,5,9,18,33,50,51,52,53,],[0,-3,-4,-8,-2,-1,-5,-6,-7,-9,]),'CURL_L':([2,6,7,8,10,],[11,13,14,15,16,]),'PERIOD':([3,],[12,]),'NUMBER':([11,13,14,15,16,23,24,25,26,27,34,35,36,37,42,43,44,45,],[17,19,20,21,22,28,29,30,31,32,38,39,40,41,46,47,48,49,]),'LABEL':([12,],[18,]),'COMMA':([17,19,20,21,22,29,30,31,32,38,39,40,41,],[23,24,25,26,27,34,35,36,37,42,43,44,45,]),'CURL_R':([28,46,47,48,49,],[33,50,51,52,53,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -28,10 +28,12 @@ del _lr_goto_items
 _lr_productions = [
   ("S' -> expression","S'",1,None,None,None),
   ('expression -> START CURL_L NUMBER COMMA NUMBER CURL_R','expression',6,'p_init_frame','U-GUI Parser.py',9),
-  ('expression -> MAKEWINDOW','expression',1,'p_make_window','U-GUI Parser.py',27),
-  ('expression -> CHECK','expression',1,'p_check','U-GUI Parser.py',33),
-  ('expression -> BUTTON CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R','expression',10,'p_CreateButton','U-GUI Parser.py',42),
-  ('expression -> OVAL CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R','expression',10,'p_CreateCircle','U-GUI Parser.py',50),
-  ('expression -> SQUARE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R','expression',10,'p_CreateSquare','U-GUI Parser.py',61),
-  ('expression -> RESET','expression',1,'p_ResetShapes','U-GUI Parser.py',71),
+  ('expression -> IDENTIFIER PERIOD LABEL','expression',3,'p_stunWarning','U-GUI Parser.py',26),
+  ('expression -> MAKEWINDOW','expression',1,'p_make_window','U-GUI Parser.py',32),
+  ('expression -> CHECK','expression',1,'p_check','U-GUI Parser.py',38),
+  ('expression -> BUTTON CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R','expression',10,'p_CreateButton','U-GUI Parser.py',47),
+  ('expression -> OVAL CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R','expression',10,'p_CreateCircle','U-GUI Parser.py',55),
+  ('expression -> SQUARE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R','expression',10,'p_CreateSquare','U-GUI Parser.py',66),
+  ('expression -> RESET','expression',1,'p_ResetShapes','U-GUI Parser.py',76),
+  ('expression -> LINE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R','expression',10,'p_CreateLine','U-GUI Parser.py',88),
 ]

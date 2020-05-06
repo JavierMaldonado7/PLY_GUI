@@ -22,6 +22,11 @@ def p_init_frame(p):
 
         p[0] = colored("Welcome to U-GUI! Window initialized.", 'yellow')
 
+def p_stunWarning(p):
+    'expression : IDENTIFIER PERIOD LABEL'
+    return 0
+
+
 #function to create an initial window or add a new one to the collection
 def p_make_window(p):
     'expression : MAKEWINDOW'
@@ -79,6 +84,15 @@ def p_ResetShapes(p):
             gui.resetOvals()
         if (shape == "all"):
             gui.resetAll()
+def p_CreateLine(p):
+    'expression : LINE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R'
+    if checkInit(p):
+        name = input(colored("Give your line a name: ", "red"))
+        color = input(colored("What color should it be(black,red,blue,green or yellow)?: ","red"))
+        while ((color != 'yellow') and (color != 'red') and (color != 'blue') and (color != 'green') and (color!= 'black')):
+            color = input(colored("Not a valid color!(black, red,blue,green or yellow)?: ", "red"))
+        gui.App.addLine(gui.App,p[3],p[5],p[7],p[9],name,color)
+        p[0] = colored('Line has been made!', 'red')
 
 
 

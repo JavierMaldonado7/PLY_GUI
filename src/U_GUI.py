@@ -7,56 +7,165 @@ frameImages = []
 buttons = []
 buttonsX = []
 buttonsY = []
-#--------OVAL SETUPS--------------------
-ovals = []
-ovalsX = []
-ovalsY = []
-ovalsW = []
-ovalsH = []
-ovalCol = []
-#---------------------------------------
-#-------SQUARE SETUPS-------------------
-squrs = []
-sqursX = []
-sqursY = []
-sqursW = []
-sqursH = []
-squrCol = []
-#---------------------------------------
+#--------OVAL DICTIONARY--------------------
+ovals = {}
+
+#-------SQUARE DICTIONARY-------------------
+squrs = {}
+
+#-------LINE DICTIONARY---------------------
+lines = {}
 
 framesArray = []
 
 
 def resetAll():
-    del ovals[:]
-    del ovalsX[:]
-    del ovalsY[:]
-    del ovalsW[:]
-    del ovalsH[:]
-    del ovalCol[:]
-    del squrs[:]
-    del sqursX[:]
-    del sqursY[:]
-    del sqursW[:]
-    del sqursH[:]
-    del squrCol[:]
+    squrs.clear()
+    ovals.clear()
 
 def resetOvals():
-    del ovals[:]
-    del ovalsX[:]
-    del ovalsY[:]
-    del ovalsW[:]
-    del ovalsH[:]
-    del ovalCol[:]
+    ovals.clear()
+
 
 def resetSquares():
-    del squrs[:]
-    del sqursX[:]
-    del sqursY[:]
-    del sqursW[:]
-    del sqursH[:]
-    del squrCol[:]
+    squrs.clear()
 
+class Square():
+    def __init__(self,x,y,h,w,name,color):
+        self.x = x
+        self.y = y
+        self.h = h
+        self.w = w
+        self.color = color
+        self.name = name
+
+    def getX(self):
+        return self.x
+
+    def getY(self):
+        return self.y
+
+    def getHeight(self):
+        return self.h
+
+    def getWidth(self):
+        return self.w
+
+    def getColor(self):
+        return self.color
+
+    def getName(self):
+        return self.name
+
+    def setX(self,X):
+        self.x = X
+
+    def setY(self,Y):
+        self.y = Y
+
+    def setHeight(self,H):
+        self.h = H
+
+    def setWidth(self,W):
+        self.w = W
+
+    def setColor(self,C):
+        self.color = C
+
+    def setName(self,NAME):
+        self.name = NAME
+
+class Oval:
+    def __init__(self,x,y,h,w,name,color):
+        self.x = x
+        self.y = y
+        self.h = h
+        self.w = w
+        self.color = color
+        self.name = name
+
+    def getX(self):
+        return self.x
+
+    def getY(self):
+        return self.y
+
+    def getHeight(self):
+        return self.h
+
+    def getWidth(self):
+        return self.w
+
+    def getColor(self):
+        return self.color
+
+    def getName(self):
+        return self.name
+
+    def setX(self,X):
+        self.x = X
+
+    def setY(self,Y):
+        self.y = Y
+
+    def setHeight(self,H):
+        self.h = H
+
+    def setWidth(self,W):
+        self.w = W
+
+    def setColor(self,C):
+        self.color = C
+
+    def setName(self,NAME):
+        self.name = NAME
+
+class Line:
+    def __init__(self,x,y,h,w,name,color):
+        self.x = x
+        self.y = y
+        self.h = h
+        self.w = w
+        self.color = color
+        self.name = name
+
+
+    def getX(self):
+        return self.x
+
+    def getY(self):
+        return self.y
+
+    def getHeight(self):
+        return self.h
+
+    def getWidth(self):
+        return self.w
+
+    def getColor(self):
+        return self.color
+
+    def getName(self):
+        return self.name
+
+
+    def setX(self,X):
+        self.x = X
+
+    def setY(self,Y):
+        self.y = Y
+
+    def setHeight(self,H):
+        self.h = H
+
+    def setWidth(self,W):
+        self.w = W
+
+    def setColor(self,C):
+        self.color = C
+
+    def setName(self,NAME):
+        self.name = NAME
 
 
 class App(tk.Frame):
@@ -81,33 +190,39 @@ class App(tk.Frame):
     def generateShapes(self,canvas):
         self.generateOvals(canvas)
         self.generateSquares(canvas)
+        self.generateLines(canvas)
 
 #-------------------OVAL GENERATION--------------------------------------------------------
     def generateOvals(self,canvas):
         for n in ovals:
-            canvas.create_oval(ovalsX[ovals.index(n)],ovalsY[ovals.index(n)],ovalsH[ovals.index(n)],ovalsW[ovals.index(n)], fill = ovalCol[ovals.index(n)])
+            canvas.create_oval(ovals.get(n).getX(),ovals.get(n).getX(),ovals.get(n).getHeight(),ovals.get(n).getWidth(), fill = ovals.get(n).getColor())
 
     def addOval(self, x , y, width, height,name,color):
-        ovals.append(name)
-        ovalsX.append(x)
-        ovalsY.append(y)
-        ovalsH.append(height)
-        ovalsW.append(width)
-        ovalCol.append(color)
+        ovals[name] =  Oval(x,y,width,height,name,color)
 #--------------------------------------------------------------------
+
 #----------------SQUARE GENERATION-----------------------------------
     def generateSquares(self, canvas):
         for n in squrs:
-            canvas.create_rectangle(sqursX[squrs.index(n)], sqursY[squrs.index(n)], sqursH[squrs.index(n)],
-                               sqursW[squrs.index(n)], fill=squrCol[squrs.index(n)])
+            canvas.create_rectangle(squrs.get(n).getX(),squrs.get(n).getX(),
+                               squrs.get(n).getHeight(),squrs.get(n).getWidth(),
+                               fill = squrs.get(n).getColor())
+
 
     def addSquare(self, x, y, width, height, name, color):
-        squrs.append(name)
-        sqursX.append(x)
-        sqursY.append(y)
-        sqursH.append(height)
-        sqursW.append(width)
-        squrCol.append(color)
+        squrs[name] = Square(x,y,width,height,name,color)
+#-------------------------------------------------------------------
+# ----------------LINE GENERATION-----------------------------------
+    def generateLines(self, canvas):
+        for n in lines:
+            canvas.create_line(lines.get(n).getX(), lines.get(n).getX(),
+                                lines.get(n).getHeight(), lines.get(n).getWidth(),
+                                fill=lines.get(n).getColor())
+
+    def addLine(self, x, y, width, height, name, color):
+            lines[name] = Line(x, y, width, height, name, color)
+
+# --------------------------------------------------------------------
 
 
 
