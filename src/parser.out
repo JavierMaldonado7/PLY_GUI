@@ -2,9 +2,8 @@ Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
 Unused terminals:
 
-    IDENTIFIER
+    END
     LABEL
-    PERIOD
 
 Grammar
 
@@ -24,12 +23,11 @@ CHECK                : 3
 COMMA                : 1 4 4 4 5 5 5 6 6 6
 CURL_L               : 1 4 5 6
 CURL_R               : 1 4 5 6
-IDENTIFIER           : 
+END                  : 
 LABEL                : 
 MAKEWINDOW           : 2
 NUMBER               : 1 1 4 4 4 4 5 5 5 5 6 6 6 6
 OVAL                 : 5
-PERIOD               : 
 RESET                : 7
 SQUARE               : 6
 START                : 1

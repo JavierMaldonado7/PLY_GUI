@@ -1,10 +1,10 @@
-
-import ply.lex as lex
 import decimal
+import ply.lex as lex
 
-#RESERVED WORDS
 
 
+
+#Reserved words stated
 reserved_words = {
 
     'start': 'START',
@@ -27,14 +27,11 @@ reserved_words = {
 
 }
 
-# tokens defined
 
 tokens = ['CURL_L','CURL_R','COMMA', 'NUMBER'] \
          + list(reserved_words.values())
 
-# Rules for tokens
 
-t_PERIOD = r'\.'
 t_COMMA = r'\,'
 
 reserved_words_map = { }
