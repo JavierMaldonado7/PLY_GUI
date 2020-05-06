@@ -137,7 +137,7 @@ class Line:
         return self.y
 
     def getHeight(self):
-        return self.h
+        return  self.h
 
     def getWidth(self):
         return self.w
