@@ -1,0 +1,342 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    IDENTIFIER
+    LABEL
+    PERIOD
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> START CURL_L NUMBER COMMA NUMBER CURL_R
+Rule 2     expression -> MAKEWINDOW
+Rule 3     expression -> CHECK
+Rule 4     expression -> BUTTON CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+Rule 5     expression -> OVAL CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+Rule 6     expression -> SQUARE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+Rule 7     expression -> RESET
+
+Terminals, with rules where they appear
+
+BUTTON               : 4
+CHECK                : 3
+COMMA                : 1 4 4 4 5 5 5 6 6 6
+CURL_L               : 1 4 5 6
+CURL_R               : 1 4 5 6
+IDENTIFIER           : 
+LABEL                : 
+MAKEWINDOW           : 2
+NUMBER               : 1 1 4 4 4 4 5 5 5 5 6 6 6 6
+OVAL                 : 5
+PERIOD               : 
+RESET                : 7
+SQUARE               : 6
+START                : 1
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . START CURL_L NUMBER COMMA NUMBER CURL_R
+    (2) expression -> . MAKEWINDOW
+    (3) expression -> . CHECK
+    (4) expression -> . BUTTON CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+    (5) expression -> . OVAL CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+    (6) expression -> . SQUARE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+    (7) expression -> . RESET
+
+    START           shift and go to state 2
+    MAKEWINDOW      shift and go to state 3
+    CHECK           shift and go to state 4
+    BUTTON          shift and go to state 5
+    OVAL            shift and go to state 6
+    SQUARE          shift and go to state 7
+    RESET           shift and go to state 8
+
+    expression                     shift and go to state 1
+
+state 1
+
+    (0) S' -> expression .
+
+
+
+state 2
+
+    (1) expression -> START . CURL_L NUMBER COMMA NUMBER CURL_R
+
+    CURL_L          shift and go to state 9
+
+
+state 3
+
+    (2) expression -> MAKEWINDOW .
+
+    $end            reduce using rule 2 (expression -> MAKEWINDOW .)
+
+
+state 4
+
+    (3) expression -> CHECK .
+
+    $end            reduce using rule 3 (expression -> CHECK .)
+
+
+state 5
+
+    (4) expression -> BUTTON . CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+
+    CURL_L          shift and go to state 10
+
+
+state 6
+
+    (5) expression -> OVAL . CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+
+    CURL_L          shift and go to state 11
+
+
+state 7
+
+    (6) expression -> SQUARE . CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+
+    CURL_L          shift and go to state 12
+
+
+state 8
+
+    (7) expression -> RESET .
+
+    $end            reduce using rule 7 (expression -> RESET .)
+
+
+state 9
+
+    (1) expression -> START CURL_L . NUMBER COMMA NUMBER CURL_R
+
+    NUMBER          shift and go to state 13
+
+
+state 10
+
+    (4) expression -> BUTTON CURL_L . NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+
+    NUMBER          shift and go to state 14
+
+
+state 11
+
+    (5) expression -> OVAL CURL_L . NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+
+    NUMBER          shift and go to state 15
+
+
+state 12
+
+    (6) expression -> SQUARE CURL_L . NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+
+    NUMBER          shift and go to state 16
+
+
+state 13
+
+    (1) expression -> START CURL_L NUMBER . COMMA NUMBER CURL_R
+
+    COMMA           shift and go to state 17
+
+
+state 14
+
+    (4) expression -> BUTTON CURL_L NUMBER . COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+
+    COMMA           shift and go to state 18
+
+
+state 15
+
+    (5) expression -> OVAL CURL_L NUMBER . COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+
+    COMMA           shift and go to state 19
+
+
+state 16
+
+    (6) expression -> SQUARE CURL_L NUMBER . COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+
+    COMMA           shift and go to state 20
+
+
+state 17
+
+    (1) expression -> START CURL_L NUMBER COMMA . NUMBER CURL_R
+
+    NUMBER          shift and go to state 21
+
+
+state 18
+
+    (4) expression -> BUTTON CURL_L NUMBER COMMA . NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+
+    NUMBER          shift and go to state 22
+
+
+state 19
+
+    (5) expression -> OVAL CURL_L NUMBER COMMA . NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+
+    NUMBER          shift and go to state 23
+
+
+state 20
+
+    (6) expression -> SQUARE CURL_L NUMBER COMMA . NUMBER COMMA NUMBER COMMA NUMBER CURL_R
+
+    NUMBER          shift and go to state 24
+
+
+state 21
+
+    (1) expression -> START CURL_L NUMBER COMMA NUMBER . CURL_R
+
+    CURL_R          shift and go to state 25
+
+
+state 22
+
+    (4) expression -> BUTTON CURL_L NUMBER COMMA NUMBER . COMMA NUMBER COMMA NUMBER CURL_R
+
+    COMMA           shift and go to state 26
+
+
+state 23
+
+    (5) expression -> OVAL CURL_L NUMBER COMMA NUMBER . COMMA NUMBER COMMA NUMBER CURL_R
+
+    COMMA           shift and go to state 27
+
+
+state 24
+
+    (6) expression -> SQUARE CURL_L NUMBER COMMA NUMBER . COMMA NUMBER COMMA NUMBER CURL_R
+
+    COMMA           shift and go to state 28
+
+
+state 25
+
+    (1) expression -> START CURL_L NUMBER COMMA NUMBER CURL_R .
+
+    $end            reduce using rule 1 (expression -> START CURL_L NUMBER COMMA NUMBER CURL_R .)
+
+
+state 26
+
+    (4) expression -> BUTTON CURL_L NUMBER COMMA NUMBER COMMA . NUMBER COMMA NUMBER CURL_R
+
+    NUMBER          shift and go to state 29
+
+
+state 27
+
+    (5) expression -> OVAL CURL_L NUMBER COMMA NUMBER COMMA . NUMBER COMMA NUMBER CURL_R
+
+    NUMBER          shift and go to state 30
+
+
+state 28
+
+    (6) expression -> SQUARE CURL_L NUMBER COMMA NUMBER COMMA . NUMBER COMMA NUMBER CURL_R
+
+    NUMBER          shift and go to state 31
+
+
+state 29
+
+    (4) expression -> BUTTON CURL_L NUMBER COMMA NUMBER COMMA NUMBER . COMMA NUMBER CURL_R
+
+    COMMA           shift and go to state 32
+
+
+state 30
+
+    (5) expression -> OVAL CURL_L NUMBER COMMA NUMBER COMMA NUMBER . COMMA NUMBER CURL_R
+
+    COMMA           shift and go to state 33
+
+
+state 31
+
+    (6) expression -> SQUARE CURL_L NUMBER COMMA NUMBER COMMA NUMBER . COMMA NUMBER CURL_R
+
+    COMMA           shift and go to state 34
+
+
+state 32
+
+    (4) expression -> BUTTON CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA . NUMBER CURL_R
+
+    NUMBER          shift and go to state 35
+
+
+state 33
+
+    (5) expression -> OVAL CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA . NUMBER CURL_R
+
+    NUMBER          shift and go to state 36
+
+
+state 34
+
+    (6) expression -> SQUARE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA . NUMBER CURL_R
+
+    NUMBER          shift and go to state 37
+
+
+state 35
+
+    (4) expression -> BUTTON CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER . CURL_R
+
+    CURL_R          shift and go to state 38
+
+
+state 36
+
+    (5) expression -> OVAL CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER . CURL_R
+
+    CURL_R          shift and go to state 39
+
+
+state 37
+
+    (6) expression -> SQUARE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER . CURL_R
+
+    CURL_R          shift and go to state 40
+
+
+state 38
+
+    (4) expression -> BUTTON CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R .
+
+    $end            reduce using rule 4 (expression -> BUTTON CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R .)
+
+
+state 39
+
+    (5) expression -> OVAL CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R .
+
+    $end            reduce using rule 5 (expression -> OVAL CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R .)
+
+
+state 40
+
+    (6) expression -> SQUARE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R .
+
+    $end            reduce using rule 6 (expression -> SQUARE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R .)
+
