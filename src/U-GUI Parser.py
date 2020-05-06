@@ -74,12 +74,12 @@ def p_ResetShapes(p):
         while ((shape != 'square') and (shape != 'oval') and (shape != 'all')):
             shape = input(colored("Not a valid shape!(square, oval or all)?: ", "red"))
         if(shape == "square"):
-            gui.resetSquares()
+            gui.resetS
         if (shape == "oval"):
             gui.resetOvals()
         if (shape == "all"):
             gui.resetAll()
-        p[0] = " Reset complete! "
+
 
 
 def p_error(p):

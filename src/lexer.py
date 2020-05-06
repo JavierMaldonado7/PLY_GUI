@@ -1,10 +1,10 @@
-import decimal
+
 import ply.lex as lex
+import decimal
+
+#RESERVED WORDS
 
 
-
-
-#Reserved words stated
 reserved_words = {
 
     'start': 'START',
@@ -19,25 +19,34 @@ reserved_words = {
 
     'square': 'SQUARE',
 
-    'reset' : 'RESET',
+    'reset': 'RESET',
 
-    'label': 'LABEL',
-
-    'end' : 'END'
-
+    'label': 'LABEL'
 }
 
+# tokens defined
 
-tokens = ['CURL_L','CURL_R','COMMA', 'NUMBER'] \
+tokens = ['CURL_L','CURL_R','COMMA', 'PERIOD', 'NUMBER','IDENTIFIER'] \
          + list(reserved_words.values())
 
+# Rules for tokens
 
+t_PERIOD = r'\.'
 t_COMMA = r'\,'
 
 reserved_words_map = { }
 
 for r in reserved_words:
     reserved_words_map[r.lower()] = r
+
+
+# Find the identifiers
+def t_IDENTIFIER(token):
+    r'[a-zA-Z_][a-zA-Z0-9_]*'
+    # Checking the reserved words
+    token.type = reserved_words.get(token.value, 'IDENTIFIER')
+    return token
+
 
 
 def t_NUMBER(token):
