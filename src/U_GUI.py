@@ -25,6 +25,8 @@ windows = []
 def resetAll():
     squrs.clear()
     ovals.clear()
+    labels.clear()
+    lines.clear()
 
 def resetOvals():
     ovals.clear()
@@ -32,6 +34,13 @@ def resetOvals():
 
 def resetSquares():
     squrs.clear()
+
+def resetLines():
+    lines.clear()
+
+def resetLabels():
+    labels.clear()
+
 
 class Label():
     def __init__(self,x,y,name,color,size):

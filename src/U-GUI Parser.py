@@ -96,15 +96,20 @@ def p_CreateSquare(p):
 def p_ResetShapes(p):
     'expression : RESET'
     if checkInit(p):
-        shape = input(colored("Reset which shape(square, oval or all)?: ","red"))
-        while ((shape != 'square') and (shape != 'oval') and (shape != 'all')):
+        shape = input(colored("Reset which object(square, oval, line, label or all)?: ","red"))
+        while ((shape != 'square') and (shape != 'oval')and (shape != 'label')and (shape != 'line') and (shape != 'all')):
             shape = input(colored("Not a valid shape!(square, oval or all)?: ", "red"))
         if(shape == "square"):
-            gui.resetS
+            gui.resetSquares()
         if (shape == "oval"):
             gui.resetOvals()
+        if (shape == "oval"):
+            gui.resetLines()
+        if (shape == "oval"):
+            gui.resetLabels()
         if (shape == "all"):
             gui.resetAll()
+
 def p_CreateLine(p):
     'expression : LINE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R'
     if checkInit(p):
