@@ -109,7 +109,7 @@ def p_ResetShapes(p):
             gui.resetLabels()
         if (shape == "all"):
             gui.resetAll()
-
+        p[0] = 'Reset complete!'
 def p_CreateLine(p):
     'expression : LINE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R'
     if checkInit(p):
