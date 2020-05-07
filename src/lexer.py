@@ -11,6 +11,8 @@ reserved_words = {
 
     'makeWindow': 'MAKEWINDOW',
 
+    'switch': 'SWITCH',
+
     'check': 'CHECK',
 
     'button': 'BUTTON',
@@ -22,6 +24,8 @@ reserved_words = {
     'reset': 'RESET',
 
     'line': 'LINE',
+
+    'update': 'UPDATE',
 
     'label': 'LABEL'
 }

@@ -16,7 +16,10 @@ squrs = {}
 #-------LINE DICTIONARY---------------------
 lines = {}
 
-framesArray = []
+#-------LABEL DICTIONARY--------
+labels = {}
+
+windows = []
 
 
 def resetAll():
@@ -29,6 +32,44 @@ def resetOvals():
 
 def resetSquares():
     squrs.clear()
+
+class Label():
+    def __init__(self,x,y,name,color,size):
+        self.x = x
+        self.y = y
+        self.size = size
+        self.color = color
+        self.name = name
+
+    def getX(self):
+        return self.x
+
+    def getY(self):
+        return self.y
+
+    def getColor(self):
+        return self.color
+
+    def getSize(self):
+        return self.size
+
+    def getName(self):
+        return self.name
+
+    def setX(self,X):
+        self.x = X
+
+    def setY(self,Y):
+        self.y = Y
+
+    def setColor(self,C):
+        self.color = C
+
+    def setName(self,NAME):
+        self.name = NAME
+
+    def setSize(self,num):
+        self.size = num
 
 class Square():
     def __init__(self,x,y,h,w,name,color):
@@ -45,17 +86,17 @@ class Square():
     def getY(self):
         return self.y
 
-    def getHeight(self):
-        return self.h
-
-    def getWidth(self):
-        return self.w
-
     def getColor(self):
         return self.color
 
     def getName(self):
         return self.name
+
+    def getHeight(self):
+       return self.h
+
+    def getWidth(self):
+       return self.w
 
     def setX(self,X):
         self.x = X
@@ -191,6 +232,16 @@ class App(tk.Frame):
         self.generateOvals(canvas)
         self.generateSquares(canvas)
         self.generateLines(canvas)
+        self.generateLabels(canvas)
+
+#-------------LABEL GENERATION--------------------------------------------------------
+    def generateLabels(self, canvas):
+        for n in labels:
+            canvas.create_text(labels.get(n).getX(), labels.get(n).getY(),
+                               text = labels.get(n).getName(), fill = labels.get(n).getColor(), font = ("Helvetica",labels.get(n).getSize()))
+
+    def addLabel(self, x, y, name, color, size):
+        labels[name] = Label(x, y, name, color,size)
 
 #-------------------OVAL GENERATION--------------------------------------------------------
     def generateOvals(self,canvas):
@@ -289,7 +340,7 @@ def makeCanvas():
     root = tk.Tk()
     root.title('U-GUI')
     root.resizable(False, False)
-    app = App(root, framesArray[currentFrame])
+    app = App(root, windows[currentFrame])
     app.init_Buttons()
     app.pack()
     app.update_idletasks()
@@ -303,5 +354,5 @@ def makeCanvas():
 # creates a new frame after the last one, with the same background, sprites and assets as the current one
 def createFrame():
     global currentFrame
-    framesArray.append(Frame(windowWidth, windowHeight))
+    windows.append(Frame(windowWidth, windowHeight))
     currentFrame = currentFrame + 1

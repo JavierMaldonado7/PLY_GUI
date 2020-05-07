@@ -8,7 +8,7 @@ from termcolor import colored
 def p_init_frame(p):
     'expression : START CURL_L NUMBER COMMA NUMBER CURL_R'
 
-    if len(gui.framesArray) > 0:
+    if len(gui.windows) > 0:
 
         p[0] = "You've already started!"
 
@@ -23,7 +23,7 @@ def p_init_frame(p):
         p[0] = colored("Welcome to U-GUI! Window initialized.", 'yellow')
 
 def p_stunWarning(p):
-    'expression : IDENTIFIER PERIOD LABEL'
+    'expression : IDENTIFIER PERIOD '
     return 0
 
 
@@ -41,6 +41,27 @@ def p_check(p):
         print("Close Window to continue.")
         gui.makeCanvas()
         p[0] = colored("Continuing...",'red')
+
+#LABELS========================================================
+def p_CreateLabel(p):
+    'expression : LABEL CURL_L NUMBER COMMA NUMBER COMMA NUMBER CURL_R'
+    if checkInit(p):
+        name = input(colored("Enter Label text: ", "red"))
+        color = input(colored("What color should it be(black,red,blue,green or yellow)?: ", "red"))
+        while ((color != 'yellow') and (color != 'red') and (color != 'blue') and (color != 'green') and (color!= 'black')):
+            color = input(colored("Not a valid color!(black, red,blue,green or yellow)?: ", "red"))
+        gui.App.addLabel(gui.App,p[3],p[5], name, color,p[7])
+        p[0] = colored('Label was made! Named'+' '+name,'red')
+
+def p_UpdateLabel(p):
+    'expression : UPDATE LABEL  CURL_L NUMBER COMMA NUMBER COMMA NUMBER CURL_R'
+    if checkInit(p):
+        name = input(colored("Update Label text: ", "red"))
+        color = input(colored("What color should it be painted(black,red,blue,green or yellow)?: ", "red"))
+        while ((color != 'yellow') and (color != 'red') and (color != 'blue') and (color != 'green') and (color!= 'black')):
+            color = input(colored("Not a valid color!(black, red,blue,green or yellow)?: ", "red"))
+        gui.App.addLabel(gui.App,p[4],p[6], name, color,p[8])
+        p[0] = colored('Label was updated! Named'+' '+name,'red')
 
 # BUTTONS------------------------------------------------------
 def p_CreateButton(p):
@@ -94,6 +115,37 @@ def p_CreateLine(p):
         gui.App.addLine(gui.App,p[3],p[5],p[7],p[9],name,color)
         p[0] = colored('Line has been made!', 'red')
 
+def p_UpdateCircle(p):
+    'expression : UPDATE OVAL CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R'
+    if checkInit(p):
+        name = input(colored("What is your oval's name? : ", "red"))
+        color = input(colored("What color should it be painted(red,blue,green or yellow)?: ", "red"))
+        while ((color != 'yellow') and (color != 'red') and (color != 'blue') and (color != 'green')):
+            color = input(colored("Not a valid color!(red,blue,green or yellow)?: ", "red"))
+        gui.App.addOval(gui.App, p[3], p[5], p[7], p[9], name, color)
+        p[0] = colored('Oval has been changed!', 'red')
+
+def p_UpdateLine(p):
+    'expression : UPDATE LINE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R'
+    if checkInit(p):
+        name = input(colored("What is your line's name? : ", "red"))
+        color = input(colored("What color should it painted(black,red,blue,green or yellow)?: ","red"))
+        while ((color != 'yellow') and (color != 'red') and (color != 'blue') and (color != 'green') and (color!= 'black')):
+            color = input(colored("Not a valid color!(black, red,blue,green or yellow)?: ", "red"))
+        gui.App.addLine(gui.App,p[3],p[5],p[7],p[9],name,color)
+        p[0] = colored('Line has been updated!', 'red')
+
+def p_UpdateSquare(p):
+    'expression : UPDATE SQUARE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R'
+    if checkInit(p):
+        name = input(colored("What is your square's name? : ", "red"))
+        color = input(colored("What color should it be painted(red,blue,green or yellow)?: ","red"))
+        while ((color != 'yellow') and (color != 'red') and (color != 'blue') and (color != 'green')):
+            color = input(colored("Not a valid color!(red,blue,green or yellow)?: ", "red"))
+        gui.App.addSquare(gui.App,p[3],p[5],p[7],p[9],name,color)
+        p[0] = colored('Square has been updated!', 'red')
+
+
 
 
 def p_error(p):
@@ -101,7 +153,7 @@ def p_error(p):
 
 
 def checkInit(p):
-    if len(gui.framesArray) > 0:
+    if len(gui.windows) > 0:
         return True
     else:
         p[0] = "Not initialized yet"
