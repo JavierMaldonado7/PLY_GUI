@@ -13,6 +13,8 @@ reserved_words = {
 
     'switch': 'SWITCH',
 
+    'background':'BACKGROUND',
+
     'check': 'CHECK',
 
     'button': 'BUTTON',

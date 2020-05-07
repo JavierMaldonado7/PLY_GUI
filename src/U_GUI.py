@@ -229,6 +229,7 @@ class App(tk.Frame):
         self.init_Buttons()
         self.top = parent
         self.makeWindow(0,self.top)
+        self.bg = 'white'
 
     def getTop(self):
         return self.top
@@ -238,10 +239,18 @@ class App(tk.Frame):
         return self.parent
 
     def generateShapes(self,canvas):
+        self.generateBgColor(canvas)
         self.generateOvals(canvas)
         self.generateSquares(canvas)
         self.generateLines(canvas)
         self.generateLabels(canvas)
+
+#=============BACKGROUND==========================
+    def changeBack(self,color):
+        self.bg = color
+
+    def generateBgColor(self, canvas):
+        self.parent.configure(bg = self.bg)
 
 #-------------LABEL GENERATION--------------------------------------------------------
     def generateLabels(self, canvas):

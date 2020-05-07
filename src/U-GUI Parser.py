@@ -150,6 +150,14 @@ def p_UpdateSquare(p):
         gui.App.addSquare(gui.App,p[3],p[5],p[7],p[9],name,color)
         p[0] = colored('Square has been updated!', 'red')
 
+def p_BackGroundColor(p):
+    'expression : BACKGROUND'
+    color = input(colored("What color should it be(black,red,blue,green or yellow)?: ", "red"))
+    while ((color != 'yellow') and (color != 'white') and (color != 'red') and (color != 'blue') and (color != 'green') and (
+            color != 'black')):
+        color = input(colored("Not a valid color!(white, black, red,blue,green or yellow)?: ", "red"))
+    gui.App.changeBack(gui.App, color)
+    p[0] = colored('Change has been made!', 'red')
 
 
 
