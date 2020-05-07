@@ -23,7 +23,9 @@ reserved_words = {
 
     'line': 'LINE',
 
-    'label': 'LABEL'
+    'label': 'LABEL',
+
+    'image': 'IMAGE',
 }
 
 # tokens defined

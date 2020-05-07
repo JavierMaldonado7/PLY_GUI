@@ -84,6 +84,7 @@ def p_ResetShapes(p):
             gui.resetOvals()
         if (shape == "all"):
             gui.resetAll()
+
 def p_CreateLine(p):
     'expression : LINE CURL_L NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R'
     if checkInit(p):
@@ -94,6 +95,11 @@ def p_CreateLine(p):
         gui.App.addLine(gui.App,p[3],p[5],p[7],p[9],name,color)
         p[0] = colored('Line has been made!', 'red')
 
+def p_LoadImage(p):
+    #'expression : IMAGE CURL_L IDENTIFIER COMMA IDENTIFIER PERIOD IDENTIFIER COMMA NUMBER COMMA NUMBER COMMA NUMBER COMMA NUMBER CURL_R'
+    'expression : IMAGE CURL_L IDENTIFIER PERIOD IDENTIFIER CURL_R'
+    gui.App.addImage(gui.App,p[3]+p[4]+p[5])
+    p[0] = colored('Image Loaded!','red')
 
 
 def p_error(p):
