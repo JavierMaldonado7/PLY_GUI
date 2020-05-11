@@ -425,7 +425,7 @@ def makeCanvas():
     app.mainloop()
 
 
-# creates a new frame after the last one, with the same background, sprites and assets as the current one
+#  creates a new frame after the last one, with the same background, sprites and assets as the current one
 def createFrame():
     global currentFrame
     windows.append(Frame(windowWidth, windowHeight))
